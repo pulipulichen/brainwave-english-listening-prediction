@@ -1,0 +1,1 @@
+mpv.exe "..\..\media\listening_q1.mp4" --no-osc

@@ -1,0 +1,1 @@
+mpv.exe "background_black.gif" --loop-file=inf --no-osc
