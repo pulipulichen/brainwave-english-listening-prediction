@@ -6,8 +6,8 @@
 ;MsgBox($MB_SYSTEMMODAL, "Test", "Start start_record" )
 
 ; 開始播放
-$media_file = IniRead ( @ScriptDir & "\config.ini", "config", "media_file", "media/listening.mp4" )
-$extapp_mpv = IniRead ( @ScriptDir & "\config.ini", "config", "extapp_mpv", "lib/mpv-x86_64-20170423/mpv.exe" )
+$media_file = IniRead ( @ScriptDir & "\config.ini", "media", "media_file", "media/listening.mp4" )
+$extapp_mpv = IniRead ( @ScriptDir & "\config.ini", "brain_viewer", "extapp_mpv", "lib/mpv-x86_64-20170423/mpv.exe" )
 
 ; mpv.exe "..\..\media\listening_q1.mp4" --no-osc
 $cmd_mpv = '"' & @ScriptDir & "\" & $extapp_mpv & '" "' & @ScriptDir & "\" & $media_file & '" --no-osc'

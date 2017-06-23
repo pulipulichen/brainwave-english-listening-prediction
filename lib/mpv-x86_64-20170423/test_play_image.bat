@@ -1,1 +1,1 @@
-mpv.exe "background_black.gif" --loop-file=inf --no-osc
+mpv.exe "background_white.gif" --loop-file=inf --no-osc --panscan=1.0
