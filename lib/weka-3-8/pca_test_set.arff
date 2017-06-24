@@ -1,0 +1,44 @@
+@relation 'whatever-weka.filters.supervised.attribute.AttributeSelection-Eweka.attributeSelection.PrincipalComponents -R 0.95 -A 5-Sweka.attributeSelection.Ranker -T -1.7976931348623157E308 -N -1'
+
+@attribute -0.131theta_avg_ch8-0.13alpha_avg_ch8-0.129beta_max_ch5-0.127gamma_avg_ch1-0.127beta_max_ch4... numeric
+@attribute -0.301theta_avg_ch2-0.297alpha_avg_ch2-0.286delta_avg_ch2-0.272beta_avg_ch2-0.269theta_max_ch2... numeric
+@attribute 0.203gamma_max_ch2+0.175beta_max_ch2-0.164theta_min_ch7-0.158alpha_min_ch8-0.156beta_avg_ch7... numeric
+@attribute -0.222theta_min_ch6+0.204theta_avg_ch1-0.191alpha_min_ch6-0.185alpha_min_ch7+0.177alpha_avg_ch1... numeric
+@attribute -0.346delta_avg_ch1-0.329delta_max_ch1-0.302theta_avg_ch1-0.284theta_max_ch1-0.239alpha_max_ch1... numeric
+@attribute '0.248delta_max_ch6+0.241delta_avg_ch6+0.196gamma_min_ch6+0.194delta_avg_ch7+0.19 delta_max_ch3...' numeric
+@attribute -0.238delta_avg_ch5-0.238alpha_min_ch5-0.223delta_max_ch5+0.196alpha_min_ch7-0.186delta_min_ch8... numeric
+@attribute '0.277beta_min_ch7+0.25 delta_min_ch3-0.239gamma_min_ch4+0.226alpha_min_ch3+0.201delta_min_ch5...' numeric
+@attribute -0.29theta_min_ch2+0.287gamma_min_ch5-0.247alpha_min_ch2-0.244beta_min_ch2+0.231gamma_min_ch7... numeric
+@attribute 0.278gamma_min_ch4+0.261gamma_min_ch5+0.231delta_avg_ch3-0.206delta_max_ch4+0.202beta_min_ch1... numeric
+@attribute 0.374beta_min_ch3+0.299theta_min_ch5+0.236alpha_min_ch3+0.235gamma_min_ch3-0.216gamma_min_ch7... numeric
+@attribute -0.353gamma_min_ch8-0.326beta_min_ch8-0.32delta_min_ch2+0.276gamma_min_ch1-0.254gamma_min_ch6... numeric
+@attribute -0.338delta_min_ch1-0.321alpha_min_ch1-0.229theta_min_ch4+0.206gamma_min_ch1+0.197beta_min_ch8... numeric
+@attribute -0.349beta_min_ch3-0.296gamma_min_ch3-0.257gamma_min_ch4+0.207theta_min_ch3-0.207theta_min_ch5... numeric
+@attribute 0.429theta_min_ch8-0.269delta_min_ch1-0.242alpha_min_ch3-0.232theta_min_ch3-0.228gamma_min_ch2... numeric
+@attribute -0.342delta_min_ch4-0.321theta_min_ch3-0.287theta_min_ch7-0.257delta_min_ch6-0.241theta_min_ch1... numeric
+@attribute -0.344delta_min_ch2+0.309theta_min_ch5-0.288alpha_min_ch4+0.282beta_min_ch8+0.209beta_min_ch1... numeric
+@attribute -0.323beta_min_ch5+0.306theta_min_ch5+0.284theta_min_ch3-0.281theta_min_ch6-0.247beta_min_ch7... numeric
+@attribute -0.298theta_min_ch4+0.243delta_min_ch4-0.242delta_min_ch7+0.236beta_min_ch3-0.207delta_min_ch3... numeric
+@attribute 0.307delta_min_ch3-0.274alpha_min_ch3-0.242beta_min_ch2-0.238delta_max_ch4+0.234delta_max_ch6... numeric
+@attribute -0.374gamma_min_ch6-0.366theta_min_ch4-0.311theta_min_ch3-0.266gamma_min_ch1+0.179theta_min_ch5... numeric
+@attribute '0.445beta_min_ch6+0.295alpha_min_ch8+0.26 gamma_min_ch8-0.211alpha_min_ch5-0.205theta_min_ch3...' numeric
+@attribute -0.421gamma_min_ch7+0.272theta_min_ch3-0.253theta_min_ch1+0.235theta_min_ch4-0.233alpha_min_ch1... numeric
+@attribute -0.353beta_min_ch1+0.311alpha_min_ch5+0.288theta_min_ch8+0.265alpha_min_ch3-0.24beta_min_ch5... numeric
+@attribute -0.304alpha_min_ch7+0.282gamma_min_ch1+0.257beta_min_ch6+0.253theta_min_ch6-0.229gamma_min_ch2... numeric
+@attribute '0.371gamma_min_ch5-0.352gamma_min_ch4-0.244gamma_min_ch3-0.239alpha_min_ch6+0.23 delta_min_ch4...' numeric
+@attribute 0.459gamma_min_ch3-0.287beta_min_ch5-0.271beta_min_ch6-0.254gamma_min_ch6+0.226alpha_min_ch6... numeric
+@attribute -0.479alpha_min_ch3+0.373theta_min_ch5-0.29beta_min_ch1-0.235delta_min_ch5-0.221beta_min_ch4... numeric
+@attribute -0.294delta_min_ch5+0.267beta_min_ch8+0.261delta_max_ch6-0.258gamma_min_ch8-0.234gamma_min_ch5... numeric
+@attribute 0.338alpha_min_ch4-0.26alpha_min_ch7-0.251delta_min_ch5-0.24gamma_min_ch1+0.239alpha_min_ch8... numeric
+@attribute '0.301delta_min_ch4+0.285delta_min_ch3+0.27 gamma_min_ch2-0.269theta_min_ch3-0.237alpha_min_ch7...' numeric
+@attribute -0.401theta_min_ch6+0.327alpha_min_ch5+0.217alpha_min_ch7+0.212beta_min_ch4-0.211theta_min_ch3... numeric
+@attribute 0.423alpha_min_ch1-0.283delta_min_ch3+0.269gamma_min_ch7+0.266theta_min_ch8-0.261gamma_min_ch6... numeric
+@attribute '0.27 delta_min_ch2+0.247beta_min_ch1-0.245alpha_min_ch6+0.242gamma_min_ch1-0.216delta_min_ch5...' numeric
+@attribute 0.455gamma_min_ch8-0.324alpha_min_ch8+0.275alpha_min_ch4-0.241beta_min_ch5-0.232gamma_min_ch5... numeric
+@attribute 0.367beta_min_ch4-0.292gamma_min_ch7-0.282beta_min_ch1-0.224gamma_min_ch4+0.207alpha_min_ch1... numeric
+@attribute 0.309gamma_min_ch6-0.292alpha_min_ch8-0.244gamma_min_ch5+0.226alpha_min_ch3-0.217theta_min_ch1... numeric
+@attribute class {right,wrong}
+
+@data
+
+2.584477,-3.654219,-0.257862,0.632032,1.571497,-0.63143,-0.299115,0.181407,-0.293089,0.951014,-1.366518,0.786483,1.46699,0.701111,-0.895034,0.612171,0.002506,1.231596,-0.483277,0.427147,-0.646574,-1.221561,-1.438805,-1.292388,0.069419,-0.134977,0.789826,-0.872555,1.280218,0.188328,0.273928,0.221174,1.332906,0.74735,0.034123,-2.004704,-0.620017,?

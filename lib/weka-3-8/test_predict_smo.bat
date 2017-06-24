@@ -1,1 +1,0 @@
-java -cp weka.jar weka.classifiers.functions.SMO -T brainwave_test_set.arff -l smo.model -p 0
