@@ -5,17 +5,21 @@
 #include <AutoItConstants.au3>
 #pragma compile(Icon, 'lib\icon\weka-icon.ico')
 
-$extapp_weka = IniRead ( @ScriptDir & "\config.ini", "weka", "extapp_weka", "lib\weka-3-8\weka.jar" )
+$extapp_weka = IniRead ( @ScriptDir & "\config.ini", "weka", "extapp_weka", "C:\Program Files\Weka-3-8\weka.jar" )
+$extapp_weka = set_full_path($extapp_weka)
 $weka_classifier = IniRead ( @ScriptDir & "\config.ini", "weka", "weka_classifier", "weka.classifiers.functions.SMO" )
 $weka_model = IniRead ( @ScriptDir & "\config.ini", "weka", "weka_model", "lib\weka\smo.model" )
+$weka_model = set_full_path($weka_model)
 $brainwave_arff = IniRead ( @ScriptDir & "\config.ini", "matlab", "brainwave_arff", "data\brainwave_test_set.arff" )
+$brainwave_arff = set_full_path($brainwave_arff)
 ;$predict_result = IniRead ( @ScriptDir & "\config.ini", "config", "weka_predict_result", "data\predict_result.txt" )
 
 ;$cmd_weka = @comspec & ' /C Java -cp "' & @ScriptDir & "\" & $extapp_weka & '" ' & $weka_classifier & ' -T "' & @ScriptDir & "\" & $brainwave_arff & '" -l "' & @ScriptDir & "\" & $weka_model & '" -p 0'
-$cmd_weka = @comspec & ' /C Java -cp "' & $extapp_weka & '" weka.Run ' & $weka_classifier & ' -T "' & @ScriptDir & "\" & $brainwave_arff & '" -l "' & @ScriptDir & "\" & $weka_model & '" -p 0'
+$cmd_weka = @comspec & ' /C Java -cp ' & $extapp_weka & ' weka.Run ' & $weka_classifier & ' -T ' & $brainwave_arff & ' -l ' & $weka_model & ' -p 0'
 
 ;MsgBox(0, "weka_predict.au3", $cmd_weka)
 ;exit;
+
 $DOS = Run($cmd_weka,  @SystemDir, Default, $STDOUT_CHILD)
 ProcessWaitClose($DOS)
 Local $predict_result = StdoutRead($DOS)
@@ -53,3 +57,12 @@ $after_predict_cmd = StringReplace($after_predict_cmd, "{prop}", $predict_prop)
 
 ;MsgBox(0, "weka_predict.au3", $after_predict_cmd)
 Run($after_predict_cmd)
+
+; ------------------------
+Func set_full_path($path)
+   If StringInStr($path, ".\") == 1 Then
+	  $path = @ScriptDir & StringMid($path,2)
+   EndIf
+   $path = '"' & $path & '"'
+   return $path
+EndFunc

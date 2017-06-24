@@ -14,6 +14,7 @@ $debug = True
 
 ; Read ini file: Brainwave Viewer Path
 $extapp_brain_viewer = IniRead ( @ScriptDir & "\config.ini", "brain_viewer", "extapp_brain_viewer", "false" )
+$extapp_brain_viewer = set_full_path($extapp_brain_viewer)
 
 If FileExists($extapp_brain_viewer) == False Then
    MsgBox($MB_SYSTEMMODAL, "Error", "Brainwave Viewer not found: " & $extapp_brain_viewer)
@@ -92,4 +93,14 @@ Func close_bg()
    ; 關閉背景
    ProcessClose($bgPID)
    WinClose("[CLASS:mpv]")
+EndFunc
+
+
+; ------------------------
+Func set_full_path($path)
+   If StringInStr($path, ".\") == 1 Then
+	  $path = @ScriptDir & StringMid($path,2)
+   EndIf
+   $path = '"' & $path & '"'
+   return $path
 EndFunc

@@ -7,10 +7,12 @@
 
 ; 開始播放
 $media_file = IniRead ( @ScriptDir & "\config.ini", "media", "media_file", "media/listening.mp4" )
+$media_file = set_full_path($media_file)
 $extapp_mpv = IniRead ( @ScriptDir & "\config.ini", "brain_viewer", "extapp_mpv", "lib/mpv-x86_64-20170423/mpv.exe" )
+$extapp_mpv = set_full_path($extapp_mpv)
 
 ; mpv.exe "..\..\media\listening_q1.mp4" --no-osc
-$cmd_mpv = '"' & @ScriptDir & "\" & $extapp_mpv & '" "' & @ScriptDir & "\" & $media_file & '" --no-osc'
+$cmd_mpv = $extapp_mpv & ' ' & $media_file
 ;MsgBox($MB_SYSTEMMODAL, "Test", $cmd_mpv )
 $iPID = Run($cmd_mpv)
 
@@ -23,3 +25,13 @@ ProcessWaitClose($iPID)
 
 ; 點選Stop按鈕 https://docs.google.com/document/d/12ovBGDn7-ici9mLa5LH7vVcIdHAbnsZ42ZM3fDNeQI4/edit#
 ControlClick("Brain Viewer", "", "lblStop")
+
+
+; ------------------------
+Func set_full_path($path)
+   If StringInStr($path, ".\") == 1 Then
+	  $path = @ScriptDir & StringMid($path,2)
+   EndIf
+   $path = '"' & $path & '"'
+   return $path
+EndFunc
