@@ -30,6 +30,8 @@ Sleep(1)
 
 If FileExists($extapp_brain_viewer) Then
    Run($extapp_brain_viewer)
+Else
+   MsgBox($MB_SYSTEMMODAL, "start.au3", "Open Brain Viewer: " &  $extapp_brain_viewer)
 EndIf
 
 ; ----------------------------------------------------
@@ -66,16 +68,33 @@ GUISetState(@SW_SHOW, $hGUI)
 			;$iPID = Run("notepad.exe", "", @SW_SHOWMAXIMIZED)
 			;MsgBox($MB_SYSTEMMODAL, "Error", "Brainwave Viewer not found: " )
 			GUIDelete($hGUI)
+			If FileExists($extapp_brain_viewer) == False Then
+			   MsgBox($MB_SYSTEMMODAL, "start.au3", "Brain Viewer start recording")
+			EndIf
 			RunWait($button_click_event)
+			If FileExists($extapp_brain_viewer) == False Then
+			   MsgBox($MB_SYSTEMMODAL, "start.au3", "Brain Viewer stop recording")
+			EndIf
 			ExitLoop
 	 EndSwitch
 WEnd
 
-
 ; -----------------------------------------------------------
 
 ; 呼叫Matlab
-MsgBox($MB_SYSTEMMODAL, "start.au3", "Next: call matlab" )
+$extapp_matlab = IniRead ( @ScriptDir & "\config.ini", "matlab", "extapp_matlab", "D:\Program\bin\matlab.exe" )
+$extapp_matlab = set_full_path($extapp_matlab)
+$mfile = IniRead ( @ScriptDir & "\config.ini", "matlab", "matlab_mfile", ".\lib\matlab\mfile.m" )
+$mfile = set_full_path($mfile)
+If FileExists($extapp_brain_viewer) == False Then
+   ; https://www.mathworks.com/help/matlab/ref/matlabwindows.html
+   ; https://stackoverflow.com/questions/6657005/matlab-running-an-m-file-from-command-line
+   ; "C:\<a long path here>\matlab.exe" -nodisplay -nosplash -nodesktop -r "run('C:\<a long path here>\mfile.m');"
+   Local $matlab_cmd = $extapp_matlab & " -nodisplay -nosplash -nodesktop -r 'run(" & $mfile & ")'"
+   RunWait($matlab_cmd)
+Else
+   MsgBox($MB_SYSTEMMODAL, "start.au3", "Next: call matlab to convert brainwave data:" & @CRLF & $extapp_matlab & @CRLF & $mfile)
+EndIf
 
 ; -----------------------------------------------------------
 
