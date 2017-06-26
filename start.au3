@@ -12,15 +12,16 @@
 
 $debug = True
 
-$config = ".\config.ini"
+$config = ".\config-q1.ini"
 If $CmdLine[0] > 0 Then
    $config = $CmdLine[1]
 EndIf
 $config = set_full_path($config)
+; MsgBox($MB_SYSTEMMODAL, "start.au3", $config & @CRLF & "D:\xampp\htdocs\autoit_projects\brainwave-english-listening-prediction\config-q1.ini"  )
 
 ; Read ini file: Brainwave Viewer Path
-$extapp_brain_viewer = IniRead ( $config, "brain_viewer", "extapp_brain_viewer", "false" )
-$extapp_brain_viewer = set_full_path($extapp_brain_viewer)
+$extapp_brain_viewer = IniRead ( "D:\xampp\htdocs\autoit_projects\brainwave-english-listening-prediction\config-q1.ini", "brain_viewer", "extapp_brain_viewer", "false" )
+$extapp_brain_viewer = set_full_path_quote($extapp_brain_viewer)
 
 If FileExists($extapp_brain_viewer) == False Then
    MsgBox($MB_SYSTEMMODAL, "Error", "Brainwave Viewer not found: " & $extapp_brain_viewer)
@@ -89,9 +90,9 @@ WEnd
 
 ; 呼叫Matlab
 $extapp_matlab = IniRead ( $config, "matlab", "extapp_matlab", "D:\Program\bin\matlab.exe" )
-$extapp_matlab = set_full_path($extapp_matlab)
+$extapp_matlab = set_full_path_quote($extapp_matlab)
 $mfile = IniRead ( $config, "matlab", "matlab_mfile", ".\lib\matlab\mfile.m" )
-$mfile = set_full_path($mfile)
+$mfile = set_full_path_quote($mfile)
 If FileExists($extapp_brain_viewer) == False Then
    ; https://www.mathworks.com/help/matlab/ref/matlabwindows.html
    ; https://stackoverflow.com/questions/6657005/matlab-running-an-m-file-from-command-line
@@ -123,6 +124,13 @@ EndFunc
 
 ; ------------------------
 Func set_full_path($path)
+   If StringInStr($path, ".\") == 1 Then
+	  $path = @ScriptDir & StringMid($path,2)
+   EndIf
+   return $path
+EndFunc
+
+Func set_full_path_quote($path)
    If StringInStr($path, ".\") == 1 Then
 	  $path = @ScriptDir & StringMid($path,2)
    EndIf

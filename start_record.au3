@@ -13,9 +13,9 @@ $config = set_full_path($config)
 
 ; 開始播放
 $media_file = IniRead ( $config, "media", "media_file", "media/listening.mp4" )
-$media_file = set_full_path($media_file)
+$media_file = set_full_path_quote($media_file)
 $extapp_mpv = IniRead ( $config, "brain_viewer", "extapp_mpv", "lib/mpv-x86_64-20170423/mpv.exe" )
-$extapp_mpv = set_full_path($extapp_mpv)
+$extapp_mpv = set_full_path_quote($extapp_mpv)
 
 ; mpv.exe "..\..\media\listening_q1.mp4" --no-osc
 $cmd_mpv = $extapp_mpv & ' ' & $media_file
@@ -35,6 +35,14 @@ ControlClick("Brain Viewer", "", "lblStop")
 
 ; ------------------------
 Func set_full_path($path)
+   If StringInStr($path, ".\") == 1 Then
+	  $path = @ScriptDir & StringMid($path,2)
+   EndIf
+   $path = '"' & $path & '"'
+   return $path
+EndFunc
+
+Func set_full_path_quote($path)
    If StringInStr($path, ".\") == 1 Then
 	  $path = @ScriptDir & StringMid($path,2)
    EndIf
