@@ -1,0 +1,1 @@
+java -cp "D:\Program Files\Weka-3-8\weka.jar" weka.Run weka.classifiers.meta.FilteredClassifier -T iris-test-set.arff -l iris-filtered.model -p 0
