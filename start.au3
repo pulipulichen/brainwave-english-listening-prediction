@@ -12,8 +12,14 @@
 
 $debug = True
 
+$config = ".\config.ini"
+If $CmdLine[0] > 0 Then
+   $config = $CmdLine[1]
+EndIf
+$config = set_full_path($config)
+
 ; Read ini file: Brainwave Viewer Path
-$extapp_brain_viewer = IniRead ( @ScriptDir & "\config.ini", "brain_viewer", "extapp_brain_viewer", "false" )
+$extapp_brain_viewer = IniRead ( $config, "brain_viewer", "extapp_brain_viewer", "false" )
 $extapp_brain_viewer = set_full_path($extapp_brain_viewer)
 
 If FileExists($extapp_brain_viewer) == False Then
@@ -37,11 +43,11 @@ EndIf
 ; ----------------------------------------------------
 
 ; 冒出一個按鈕，這個按鈕要放在最上層，按下去就開始錄
-$start_dialog_title = IniRead ( @ScriptDir & "\config.ini", "brain_viewer", "start_dialog_title", "English Listening Test" )
-$start_dialog_button = IniRead ( @ScriptDir & "\config.ini", "brain_viewer", "start_dialog_button", "Test Start" )
+$start_dialog_title = IniRead ( $config, "brain_viewer", "start_dialog_title", "English Listening Test" )
+$start_dialog_button = IniRead ( $config, "brain_viewer", "start_dialog_button", "Test Start" )
 $icon = @ScriptDir &  "\lib\icon\start.ico"
 $icon_record = @ScriptDir &  "\lib\icon\start_record.ico"
-$button_click_event="start_record.exe"
+$button_click_event="start_record.exe " & $config
 
 ; Create a GUI with various controls.
 Local $hGUI = GUICreate($start_dialog_title, 250, 50,-1,-1,-1,$WS_EX_TOPMOST)
@@ -82,9 +88,9 @@ WEnd
 ; -----------------------------------------------------------
 
 ; 呼叫Matlab
-$extapp_matlab = IniRead ( @ScriptDir & "\config.ini", "matlab", "extapp_matlab", "D:\Program\bin\matlab.exe" )
+$extapp_matlab = IniRead ( $config, "matlab", "extapp_matlab", "D:\Program\bin\matlab.exe" )
 $extapp_matlab = set_full_path($extapp_matlab)
-$mfile = IniRead ( @ScriptDir & "\config.ini", "matlab", "matlab_mfile", ".\lib\matlab\mfile.m" )
+$mfile = IniRead ( $config, "matlab", "matlab_mfile", ".\lib\matlab\mfile.m" )
 $mfile = set_full_path($mfile)
 If FileExists($extapp_brain_viewer) == False Then
    ; https://www.mathworks.com/help/matlab/ref/matlabwindows.html

@@ -5,10 +5,16 @@
 
 ;MsgBox($MB_SYSTEMMODAL, "Test", "Start start_record" )
 
+$config = ".\config.ini"
+If $CmdLine[0] > 0 Then
+   $config = $CmdLine[1]
+EndIf
+$config = set_full_path($config)
+
 ; 開始播放
-$media_file = IniRead ( @ScriptDir & "\config.ini", "media", "media_file", "media/listening.mp4" )
+$media_file = IniRead ( $config, "media", "media_file", "media/listening.mp4" )
 $media_file = set_full_path($media_file)
-$extapp_mpv = IniRead ( @ScriptDir & "\config.ini", "brain_viewer", "extapp_mpv", "lib/mpv-x86_64-20170423/mpv.exe" )
+$extapp_mpv = IniRead ( $config, "brain_viewer", "extapp_mpv", "lib/mpv-x86_64-20170423/mpv.exe" )
 $extapp_mpv = set_full_path($extapp_mpv)
 
 ; mpv.exe "..\..\media\listening_q1.mp4" --no-osc
